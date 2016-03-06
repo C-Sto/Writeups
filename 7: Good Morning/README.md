@@ -65,3 +65,11 @@ and the resulting query:
 ``` sql
 SELECT * FROM answers WHERE question="¥\" or 1 = 1;" AND answer=""
 ```
+
+which results in the flag being obtained
+
+``` json
+
+{"type": "got_answer", "row": [1, "flag", "BKPCTF{TryYourBestOnTheOthersToo}"]}
+
+```
