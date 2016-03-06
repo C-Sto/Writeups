@@ -61,7 +61,7 @@ The crafted json to send to the websocket:
 
 ```
 
-and the resulting query (remember that ¥ is equivalent to \):
+and the resulting query (remember that ¥ is equivalent to \\):
 ``` sql
 SELECT * FROM answers WHERE question="¥\" or 1 = 1;" AND answer=""
 ```
