@@ -25,7 +25,7 @@ def check(hashstr1, hashstr2):
 ```
 
 The check function appears to do a fairly thorough test for equality, but not quite thorough enough.
-Passing in a two strings with different lengths of null bytes will result in an equality check failing,
+Passing in the two strings with different lengths of null bytes will result in an equality check failing,
 but the hash function relies on the value passed in (which is zero for both strings)
 and result in the same hash. Much easier than generating a collision the manual way.
 
