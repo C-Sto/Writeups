@@ -79,7 +79,7 @@
  That hash value is 20 bytes long, which means a 160 bit hash function. 
  SHA1 is the most likely candidate (-m 100). Here is the picture provided:
  
- ![Image of pin pad](https://github.com/C-Sto/Writeups/blob/master/HowTo/Hashing/1.Hashcat/challenge-1.png)
+ ![Image of pin pad](https://github.com/C-Sto/Writeups/blob/master/HowTo/Hashing/1.Hashcat/Brute%20force%20(mask)/challenge-1.png)
  
  We are told that the value is salted with the value "cysca2015" and 16 digits long.
  
