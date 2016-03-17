@@ -1,4 +1,4 @@
-###### Hashcat
+# Hashcat
 
 Hashing is fun and all, but if you are trying to find a collision, or 
 find the un-hashed value it takes a lot of work. Thankfully, we have super 
@@ -16,14 +16,14 @@ So for example, doing a brute force attack on an md5 hash would look like:
 oclHashcat -m 0 5f4dcc3b5aa765d61d8327deb882cf99 -a 3 ?a?a?a?a?A?a?a?a
 
 
-### Attack Types
+## Attack Types
 
 In reality, all the modes of operation are important for certain tasks, 
 however there are a few that will be used fairly often. Brute-force (mask)
  Dictionary, and Rule based are the three that will be most likely to be handy,
  so I'll go over those first.
  
- ##Brue force (Mask)
+### Brue force (Mask)
  
  The mask version of brute force is identical to normal brute-force, except 
  you have more control over what values are tried. If for example, you know 
