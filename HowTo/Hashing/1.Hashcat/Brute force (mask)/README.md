@@ -96,6 +96,7 @@
  Here are some hashes you can try, with hints.
  
  All hashes are salted with "ecu_cysca_training{" prepended, and "}" appended.
+ 
 ------------------------------------------------------------------------------
 
 #### hash:
@@ -118,6 +119,7 @@
 #### Hint:
  The first three letters are either lower or upper case, then the word 'guessed'
   appears, then three letters that could be any of "awish", then three numbers that are any of 6, 3, 5 and 2
+  
 ------------------------------------------------------------------------------------------------------------
 
 #### Hash:
