@@ -97,26 +97,26 @@
  
  All hashes are salted with "ecu_cysca_training{" prepended, and "}" appended.
  
- ####hash:
+#### hash:
  a1e47a8ddb72ba53f5b690addf7ec84d0c792a8d
- ####Hint:
+#### Hint:
  numbers 1,3,7 and 9, length 14
  
- ####Hash:
+#### Hash:
  284d8b897d2b14f654b4a34cf29351bdb0e2beae
- ####Hint:
+#### Hint:
  First letters are "super", next 3 could be 1,3, 4 7 or 0, the 
  two letters are 'th' followed by a number, followed by one lowercase letter, followed by 4 numbers
   
- ####Hash:
+#### Hash:
  a75539d985ee3a4554a4e3a21082d71b6d8178a01c04c35afb50d8468322def3
- ####Hint:
+#### Hint:
  The first three letters are either lower or upper case, then the word 'guessed'
   appears, then three letters that could be any of "awish", then three numbers that are any of 6, 3, 5 and 2
   
- ####Hash:
+#### Hash:
  f9eace6d5491cc6fc40b604e162bb787a9da7f11c47329d371fb7b3d25fa5c97
- ####Hint:
+#### Hint:
  10 letters long, using only the *letters* found on the top row of the keyboard. (this one might take a while on a slower computer)
  
  
