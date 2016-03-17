@@ -39,7 +39,7 @@ however there are a few that will be used fairly often. Brute-force (mask)
 ?l = abcdefghijklmnopqrstuvwxyz
 ?u = ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ?d = 0123456789
-?s = «space»!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~
+?s = «space»!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 ?a = ?l?u?d?s
 ?b = 0x00 - 0xff
 
