@@ -48,6 +48,13 @@ inputs and outputs. To do this, give it two different length outputs
 (by one, usually), and see how the length in the corresponding ciphertext changes.
 If it doesn't change, or changes by more than the difference in input, it's
 probably a block cipher. 
+
+```
+Enter some stuff to encrypt: a
+Length of ciphertext:  80
+Enter some stuff to encrypt: aa
+Length of ciphertext:  80
+```
  
 Next, to detect if it's in ECB mode, we send a long string 
 of the same character, over and over. We want to aim for 2-3x the block size,
@@ -56,6 +63,13 @@ about patterns longer than the blocksize showing up in ciphertext? now we look
 at the ciphertext block by block, if there is a duplicate block in there we know
 two things, first, it's most likely ECB, second, that block is what your string of the 
 same character encrypts to. Cool!
+
+```
+
+Enter some stuff to encrypt: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Encrypted spaced version:  ['a675708a5ab2f63f98601f5f65503e42', 'd5289b59ba8ae1b78e48ef20c7dc8b09', '078054d5163668e18390572c02acf55b', '7b3afcc1ca10367fc90d6fb9371fc999', 'e3a71eaa444bef1a53c8384b8965994e', 'e3a71eaa444bef1a53c8384b8965994e', '4eda754faa0d04eb27ebc8f588a0fea7', 'd6f6a8406e62eed352915b2c03d99c32'] 
+
+```
 
 Now that we know that, if we have a good guess as to what the plaintext string 
 is that we want to be the result of the decryption, all we need to do is replace 
@@ -86,6 +100,9 @@ admin!
 If you are in the unfortunate position where you need to paste it on the border between 
 two blocks, and it comes in the plaintext before we can add padding, you are going to need 
 to generate valid plaintext for both of those blocks, and replace them.
+
+I've provided a test tool in python, it breaks the ciphertext into blocks, 
+and lets you know the length to
  
 
 
