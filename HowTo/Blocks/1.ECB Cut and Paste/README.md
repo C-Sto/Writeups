@@ -70,7 +70,7 @@ actually the basis for another attack, we will get onto that later). So,
 add the character back, then remove one block worth of characters. In the case 
 of AES, this is 16. You should still have at least one blocksize worth of 
 characters left, and probably some additional padding. Replace the blocksize 
-worth of characters, with a string you want, something like, say " is_admin:"yes"}"
+worth of characters, with a string you want, something like, say  ```is_admin:"yes"}```
 
 Now, we remember what the repeating character block looks like right? take the 
 new block after that, and copy it. If you have access to the decryption function 
