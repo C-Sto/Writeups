@@ -15,7 +15,7 @@ ciphertext blocks represent parts of the plaintext that also repeat.
 This means repeating patterns appear in the ciphertext - as can be
  seen by the famous ECB penguin.
  
- !(ecbPenguin)[https://github.com/C-Sto/Writeups/blob/master/HowTo/Blocks/1.ECB%20Cut%20and%20Paste/ecbPenguin.png]
+ ![ecbPenguin](https://github.com/C-Sto/Writeups/blob/master/HowTo/Blocks/1.ECB%20Cut%20and%20Paste/ecbPenguin.png)
  
 So using it on files with patterns longer than the block size is bad. We 
 should be able to use it on small sets of data though, right?
