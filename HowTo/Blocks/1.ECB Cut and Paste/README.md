@@ -15,14 +15,14 @@ ciphertext blocks represent parts of the plaintext that also repeat.
 This means repeating patterns appear in the ciphertext - as can be
  seen by the famous ECB penguin.
  
- !(ecbPenguin)[<insert penguin here>]
+ !(ecbPenguin)[https://github.com/C-Sto/Writeups/blob/master/HowTo/Blocks/1.ECB%20Cut%20and%20Paste/ecbPenguin.png]
  
 So using it on files with patterns longer than the block size is bad. We 
 should be able to use it on small sets of data though, right?
 
-Well, sure, but it also has the slightly weird property that you can literally 
-copy and paste blocks, and as long as it's valid ciphertext it will end up being valid 
-plaintext.
+Well, sure, but it also has the slightly annoying property that you can literally 
+copy and paste blocks, and as long as it's valid ciphertext it will end up
+ being decrypted to valid plaintext.
 
 Let's first make a few assumptions. Firstly, the encryption function is secure. 
 That means that as far as looking at ciphertext, plaintext, and keys, we can't simply 
