@@ -21,8 +21,8 @@ ui = ""
 while ui != "!q" :
     enc = encrypt(key)
     spaced = [enc[i:i+32] for i in range(0,len(enc),32)]
-    print "Encrypted spaced version: ",spaced,'\n'
-    print "Encrypted version: ", enc ,'\n'
+    print "Encrypted spaced version: ", spaced, '\n'
+    print "Encrypted version: ", enc, '\n'
     print "Length of ciphertext: ",  len(enc)/2
     ui = raw_input("Enter some hex to decrypt: ")
     if ui == "!q":
