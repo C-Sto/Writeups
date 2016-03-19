@@ -22,10 +22,9 @@ Phi(n) = The totient of P and Q. This is used to pick D.
 
 #### Using RSA in Python
 
-I'll go through some basic usage of RSA in Python, your milage may vary in other 
-languages, but Python is pretty quick to get up and running. Generally, anything 
-that needs super intense processing will not be do-able in python directly, though 
-can be called from Python.
+The rsa_usage.py file is fairly self explanitory, look at it to see some usage examples
+
+
 
 
 
