@@ -1,7 +1,7 @@
-###### RSA
+# RSA
 
-RSA is a pretty popular cryptosystem. It consists of a public key, and a private key
-both derived from the same sets of numbers. Some numbers can be known, some cannot.
+RSA is a pretty popular crypto system. It consists of a public key, and a private key
+both derived from the same sets of numbers. Some numbers can be known (public), some cannot (private).
 
 Generally, these are the different parts and descriptions of each:
 
@@ -19,3 +19,13 @@ E = The public exponent. This is generally one of a few small primes. This is th
 used to multiply the plaintext message
 
 Phi(n) = The totient of P and Q. This is used to pick D.
+
+#### Using RSA in Python
+
+I'll go through some basic usage of RSA in Python, your milage may vary in other 
+languages, but Python is pretty quick to get up and running. Generally, anything 
+that needs super intense processing will not be do-able in python directly, though 
+can be called from Python.
+
+
+
