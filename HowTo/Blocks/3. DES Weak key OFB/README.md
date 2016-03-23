@@ -16,6 +16,10 @@ is the cipher takes a first input (an IV), and encrypts it, then encrypts the
 ciphertext from that to generate the next block etc. The keystream that is generated 
 is then XOR'd against the plaintext. I'm sure you can see where this is going...
 
+Here is a handy diagram that was stolen from wikipedia
+
+![ofb diagram](https://github.com/C-Sto/Writeups/blob/master/HowTo/Blocks/3.%20DES%20Weak%20key%20OFB/OFB.png)
+
 ### Combining the two
 
 Since using DES with a weak key has that super sweet effect of, it means 
