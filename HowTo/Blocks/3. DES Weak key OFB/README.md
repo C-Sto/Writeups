@@ -28,5 +28,5 @@ Since we know the IV, we can just XOR it against the ciphertext to test, if
 half of the ciphertext is legible, we can deduce that a weak key is used, 
 and since there is only a handful, we can simply just try each until one works \o/
 
-I've included a file that has 4 different ciphertexts, figure out which one 
+I've included a file that has 5 different ciphertexts, figure out which one 
 is vulnerable to the weak key, and find the secrets held within
