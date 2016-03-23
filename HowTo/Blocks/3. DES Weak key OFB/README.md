@@ -22,10 +22,10 @@ Here is a handy diagram that was stolen from wikipedia
 
 ### Combining the two
 
-Since using DES with a weak key has that super sweet effect of, it means 
+Since using DES with a weak key has that super sweet effect, it means 
 that every other block in the cipher is then simple XOR'd against the IV. 
 Since we know the IV, we can just XOR it against the ciphertext to test, if 
-half of the ciphertexts is legible, we can deduce that a weak key is used, 
+half of the ciphertext is legible, we can deduce that a weak key is used, 
 and since there is only a handful, we can simply just try each until one works \o/
 
 I've included a file that has 4 different ciphertexts, figure out which one 
