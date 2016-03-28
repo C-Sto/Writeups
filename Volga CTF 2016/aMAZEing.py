@@ -2,9 +2,6 @@ import socket
 import time
 import math
 import Queue
-import threading
-import multiprocessing
-from operator import itemgetter
 HOST = "amazing.2016.volgactf.ru"
 PORT = 45678
 INVERT_MOVES = {'l':'r','r':'l','u':'d','d':'u'}
@@ -34,6 +31,8 @@ def replace_string_index(string, index, character):
 class Game:
     state = []
     myloc = (1,1)
+    max_x = 0
+    max_y = 0
 
     def __init__(self, state):
         self.set_state(state)
@@ -46,6 +45,12 @@ class Game:
             self.state = state
         else:
             self.state = state.split('\n')
+        count = 0
+        for x in self.state:
+            if len(x) > 0:
+                self.max_y = count
+                if x[0] == "+": self.max_x = max(len(x),self.max_x)
+            count += 1
         self.set_MyLoc()
 
     def set_MyLoc(self):
@@ -123,7 +128,8 @@ class Game:
         return ret
 
     def print_state(self):
-        print self.state
+        for s in self.state:
+            print s
         print self.get_MyLoc()
 
 
@@ -158,6 +164,8 @@ class Player:
                 self.game_y = y
         self.game_x = len(self.game.get_state()[0])
         self.exit = self.game_x-3, self.game_y-1
+
+
     def download_game_state(self):
         global start_time
         raw = self.s.recv(1024)
@@ -172,7 +180,11 @@ class Player:
         if "Round " in raw or "{" in raw:
             start_time = time.time()
             self.set_exit()
-            print raw
+        for x in range(len(raw)):
+            if raw[x] == "*":
+                raw = raw[:x]+"\033[91m"+"*"+"\033[0m"+raw[x+1:]
+                break
+        print raw
 
     def print_state(self):
         self.game.print_state()
@@ -184,7 +196,7 @@ class Player:
             print "No more moves, soz m8"
             self.connect(self.host,self.port)
         print "Total connect time:", connected
-        if connected>78:
+        if connected > 83:
             print "connection aborted, lets try that again.."
             self.connect(self.host,self.port)
         print "Sending:",move
@@ -195,48 +207,51 @@ class Player:
         print "looking for exit at:", self.exit
         print "Player position:", self.game.get_MyLoc()
         print "Thinking.."
-        #path = depth_first_search([],"",self.get_game_state(),self.exit)[0]
+        #path = depth_first_search([],"",self.get_game_state(),self.exit)
         path = a_star_search(self.get_game_state(),self.exit)
-        return path
+        print path[1]
+        return path[0]
 
 
 def a_star_search(state, exit):
-    open_graph = state.generate_successors()
-    closed_graph = []
+    first = state.generate_successors()
+    open_graph = dict()
+    closed_graph = set()
+    closed_graph.add(state.get_MyLoc())
     highScore = -999999999
     highMove = ""
     moveQ = Queue.PriorityQueue()
-    for ki in open_graph:
-        moveQ.put((-score_function(open_graph[ki].get_MyLoc(),state,exit),ki))
+    for ki in first:
+        if first[ki].get_MyLoc() not in closed_graph:
+            moveQ.put((-score_function(first[ki].get_MyLoc(),state,exit),ki))
+            open_graph[ki] = first[ki]
     while len(open_graph.keys()) > 0:
         move = moveQ.get()[1]
         # check for exit
-        loc = open_graph[move].get_MyLoc()
+        state = open_graph[move]
+        del(open_graph[move])
+        loc = state.get_MyLoc()
         if loc == exit:
             print "Exit found :D"
-            return move+'r'
+            return move+'r', 9999999
         # check score
-        score = score_function(loc,open_graph[move],exit)
+        score = score_function(loc,state,exit)
+        # if score high enough, return it
+        if score > 500:
+            return move, score
         if score>highScore:
             highScore = score
             highMove = move
-        # if score high enough, return it
-        if score > 900:
-            return move
         # move location to closed graph
-        closed_graph.append(loc)
+        closed_graph.add(loc)
         # add successors to open graph if their location isn't in closed
-        succ = open_graph[move].generate_successors()
+        succ = state.generate_successors()
         # no more need for the open graph state, remove it
-        del(open_graph[move])
         for m in succ:
             if succ[m].get_MyLoc() not in closed_graph:
                 open_graph[move+m] = succ[m]
-                moveQ.put((-score_function(succ[m].get_MyLoc(),succ[m],exit),move+m))
-        if moveQ.qsize() > 5:
-            m = moveQ.get()
-            return m[1]
-    return highMove
+                moveQ.put((-score_function(succ[m].get_MyLoc(), succ[m], exit), move+m))
+    return highMove, highScore
 
 def depth_first_search(visited,path,state,exit):
     visited.append(state.get_MyLoc())
@@ -282,14 +297,22 @@ def score_function((x,y),state, exit):
         return 999999
     score = 0
     #encourage moving to the bottom right
-    score += (euclid_dist((exit[0]/3,exit[1]/2))-euclid_dist((exit[0]/3,exit[1]/2), (x/3,y/2)))*8
+    score -= euclid_dist(exit,(x,y))
 
     #encourage being close to '#'s
-    close = closest_hash((x,y),state)
-    score -= close*9
-    # if we are right next to a hash, that's a bonus
-    if close < 4:
-        score += 1000
+    hash_range_x = 10
+    hash_range_y = 6
+    for hash_x in range(hash_range_x)*2:
+        search_x = min(max(x+hash_range_x-hash_x,0), state.max_x-1)
+        if state.get_state()[y][search_x] == "#":
+            score += 1000
+            break
+    if score < 1000:
+        for hash_y in range(hash_range_y)*2:
+            search_y = min(max(y+hash_range_y-hash_y,0),state.max_y)
+            if state.get_state()[search_y][x] == "#":
+                score += 1000
+                break
     return score
 
 def closest_hash((x,y),state):
@@ -314,9 +337,14 @@ def closest_hash((x,y),state):
     return closest
 
 def euclid_dist(otherpoint, me = (0,0)):
+    '''
     p = me
     q = otherpoint
     return math.sqrt(math.pow(abs(q[0]-p[0]),2)+math.pow((abs(q[1]-p[1])),2))
+     #Change to manhattan distance for being fast
+    '''
+    return (abs(me[0] - otherpoint[0]))+(abs(me[1]-otherpoint[1]))
+
 
 print "Doing player things"
 p = Player(HOST,PORT)
