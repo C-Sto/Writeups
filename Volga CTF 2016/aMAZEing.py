@@ -169,21 +169,21 @@ class Player:
     def download_game_state(self):
         global start_time
         raw = self.s.recv(1024)
+        if "VolgaCTF" in raw:
+            print raw
         state = raw
         while state.count('\n') < 41:
             if "+" in state:
                 state = state[state.index("+"):]
             newraw = self.s.recv(1024)
+            if "VolgaCTF" in newraw:
+                print raw
             state +=newraw
             raw+=newraw
         self.game = Game(state)
-        if "Round " in raw or "{" in raw:
+        if "Round " in raw or "VolgaCTF" in raw:
             start_time = time.time()
             self.set_exit()
-        for x in range(len(raw)):
-            if raw[x] == "*":
-                raw = raw[:x]+"\033[91m"+"*"+"\033[0m"+raw[x+1:]
-                break
         print raw
 
     def print_state(self):
