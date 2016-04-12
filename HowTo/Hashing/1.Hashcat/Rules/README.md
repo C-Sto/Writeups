@@ -91,7 +91,9 @@ numberofrules*numberofwords (which can get big very quickly).
 Okay, lets have a look at the relevant Cysca2015 hash.
 
 The hash (with salt):
+
 3bb2dd1a9b36f4745e994e3bea658e79:cysca2015
+
 The hints:
 
 We are given the XKCD image:
