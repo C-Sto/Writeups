@@ -70,6 +70,7 @@ We can use maskprocessor -o to send the output into a file. So doing 1990
 through 2020 would be as simple as doing the two maskprocessor commands:
 
 ``` maskprocessor 19?d?d -o years```
+
 ``` maskprocessor -1 012 20?1?d -o years```
 
 However, we want the numbers in a valid rule format. So we change the command
@@ -77,6 +78,7 @@ to have a $ (for append) before each character (since this is done in the
 terminal, we need to escape by wrapping the mask in ''s):
 
 ``` maskprocessor '$1$9$?d$?d' -o years.rule ```
+
 ``` maskprocessor -1 012 '$2$0$?1$?d' -o years.rule```
 
 We need to remember, though, that _each_ of these rules will be applied to 
@@ -111,7 +113,9 @@ Looking at the XKCD, we can guess that the substitutions are _probably_
 going to be simple 'leet' substitutions (a for 4, o for 0, etc). Let's first 
 try a full substitution, since partial or one time substitution rules as seen 
 in the comic are slightly more complicated to write. Our rule will look like:
+
 ``` sa4so0si1se3 ```
+
 Let's try it with their dictionary:
 
 ```hashcat -a 0 -m 20 hashfile dictionary -r rulefile ```
@@ -139,26 +143,31 @@ file, and _some_ sort of rule/s.
 
 Hash:
 51335e337e4c6be887c97aa97dd855bc1f05dcb03badcc1ad2f8f0471f4f146c
+
 Hint:
 sup3r 3asy
 
 Hash:
 44b3aeb6e5ae9baba6254e3d5c0e377f88fac7f6dbdeb931e4ca8dba2ace8a4e
+
 Hint:
 The year of the hipster submarine thing
 
 Hash:
 92a65a2dee5bcb79dbe2985f2319c5fdc33583d4211f8c23747d25d07240ea61
+
 Hint:
 if a password is too short, just double it right?
 
 Hash:
 2277090479ad9447de920de8288c11abe8fc1a8d7ce6d6ca1eca6ff8c30032e5
+
 Hint:
 drowssap
 
 Hash:
 0d2f93b486f91ffe093a01b28b47e6ec855f6af0993bcc74efe22161d188c046
+
 Hint:
 if a password isn't good, just add 4 numbers to the end
 
