@@ -15,6 +15,10 @@ just add a newline. Be aware that for every rule, it will test the plaintext
  attack that implements complicated rules will always be slower than one 
  without rules. There are some intricacies in terms of which versions have which rules, 
  But I tend to go on the 'try and see' basis.
+ 
+ An excellent way of making sure your rules are working properly is using 
+ the --stdout argument. The only problem with this is that this will only 
+ work with hashcat, oclhashcat will not work with the --stdout argument.
 
 
 ## Replace
