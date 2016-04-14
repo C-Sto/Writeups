@@ -82,6 +82,8 @@
  ![Image of pin pad](https://github.com/C-Sto/Writeups/blob/master/HowTo/Hashing/1.Hashcat/Brute%20force%20(mask)/challenge-1.png)
  
  We are told that the value is salted with the value "cysca2015" and 16 digits long.
+ We'll use the 'known' portion of the mask for the salt, for practise, but 
+ there is a standard way of telling hashcat what your salt is (mentioned in the main doc)
  
  So, using that information, we can devise a custom mask ```-1 0942```
  
@@ -92,6 +94,8 @@
  oclhashcat -m 100 0137d1896047cbf24bcb18f79a9ad475933ad229 -a 3 -1 0942 cysca2015?1?1?1?1?1?1?1?1?1?1?1?1?1?1?1?1
  
  ```
+ 
+ Confirm that it works for you.
  
  Here are some hashes you can try, with hints.
  
