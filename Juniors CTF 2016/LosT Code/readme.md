@@ -26,3 +26,14 @@ Gideon: Oh no, not the broom!
 Gideon: You mark my words, Stanford, one day I'm gonna get that combination. And once I steal that deed, you'll never see the Mystery Shack again!
 
 Your hacker skills can be useful. Help Gideon to crack the safe. You'll need a special picklock.
+
+## Solution
+
+We are supplied with a binary that takes a 32 byte input, it outputs a '1' in the relevant place if your guess is correct. Easy enough to brute force, iterate over each position and try values until we get a 1 bit in the output.
+
+~~~
+root@kali:~/Desktop/ctf/Junior# python solv.py
+616dc3888a99170c5b8aa721d925ac68
+~~~
+
+
