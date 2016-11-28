@@ -223,6 +223,8 @@ A whole bunch of garbage - I've removed the 'image filename' and most of the 'Im
 
 `for f in *; do if grep Оригинальный $f; then echo "$f";fi; done`
 
+This iterates ove each file, greps it for the text (which should appear as a string in the file) and outputs the filename if it appears.
+
 which gives us
 
 `Binary file atvF2wf1tfB2IkuV.jpg matches
